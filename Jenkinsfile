@@ -11,7 +11,6 @@ pipeline {
         // MONGO_USERNAME = credentials('mongo-db-username')
         // MONGO_PASSWORD = credentials('mongo-db-password')
 
-
     }
 
     stages {
