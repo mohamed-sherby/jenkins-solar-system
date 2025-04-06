@@ -18,6 +18,7 @@ pipeline {
             options { timestamps() }
             steps {
                 sh 'npm install --no-audit'
+                sh "echo test"
             }
         }
     }
