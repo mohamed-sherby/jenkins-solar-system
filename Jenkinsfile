@@ -44,7 +44,7 @@ pipeline {
                             odcInstallation: 'owasp',
                             nvdCredentialsId: 'nvd-api-key'
 
-                        dependencyCheckPublisher failedTotalCritical: 1, pattern: 'dependency-check-report.xml', stopBuild: false
+                        dependencyCheckPublisher failedTotalCritical: 1, pattern: 'dependency-check-junit.xml', stopBuild: false
                     }
                 }
             }
