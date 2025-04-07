@@ -40,7 +40,9 @@ pipeline {
                             --out \'./\'  
                             --format \'ALL\' 
                             --disableYarnAudit \
-                            --prettyPrint''', odcInstallation: 'owasp'
+                            --prettyPrint''', 
+                            odcInstallation: 'owasp',
+                            nvdCredentialsId: 'nvd-api-key'
 
                         dependencyCheckPublisher failedTotalCritical: 1, pattern: 'dependency-check-report.xml', stopBuild: false
                     }
