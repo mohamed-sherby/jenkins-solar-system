@@ -66,7 +66,7 @@ pipeline {
             steps {
                 sh '''
                     ${SONAR_SCANNER_CMD} \
-                    -Dsonar.projectKey=supercluster \
+                    -Dsonar.projectKey=solar-system \
                     -Dsonar.sources=app.js \
                     -Dsonar.host.url=http://172.17.0.3:9000 \
                     -Dsonar.login=$SONAR_TOKEN
