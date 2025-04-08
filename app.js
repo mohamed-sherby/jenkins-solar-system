@@ -13,45 +13,46 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '/')));
 app.use(cors())
 
-mongoose.connect(process.env.MONGO_URI, {
-    user: process.env.MONGO_USERNAME,
-    pass: process.env.MONGO_PASSWORD,
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}, function(err) {
-    if (err) {
-        console.log("error!! " + err)
-    } else {
-      //  console.log("MongoDB Connection Successful")
-    }
-})
+// mongoose.connect(process.env.MONGO_URI, {
+//     user: process.env.MONGO_USERNAME,
+//     pass: process.env.MONGO_PASSWORD,
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// }, function(err) {
+//     if (err) {
+//         console.log("error!! " + err)
+//     } else {
+//       //  console.log("MongoDB Connection Successful")
+//     }
+// })
 
-var Schema = mongoose.Schema;
+// var Schema = mongoose.Schema;
 
-var dataSchema = new Schema({
-    name: String,
-    id: Number,
-    description: String,
-    image: String,
-    velocity: String,
-    distance: String
-});
-var planetModel = mongoose.model('planets', dataSchema);
+// var dataSchema = new Schema({
+//     name: String,
+//     id: Number,
+//     description: String,
+//     image: String,
+//     velocity: String,
+//     distance: String
+// });
+// var planetModel = mongoose.model('planets', dataSchema);
 
 
 
 app.post('/planet',   function(req, res) {
    // console.log("Received Planet ID " + req.body.id)
-    planetModel.findOne({
-        id: req.body.id
-    }, function(err, planetData) {
-        if (err) {
-            alert("Ooops, We only have 9 planets and a sun. Select a number from 0 - 9")
-            res.send("Error in Planet Data")
-        } else {
-            res.send(planetData);
-        }
-    })
+    // planetModel.findOne({
+    //     id: req.body.id
+    // }, function(err, planetData) {
+    //     if (err) {
+    //         alert("Ooops, We only have 9 planets and a sun. Select a number from 0 - 9")
+    //         res.send("Error in Planet Data")
+    //     } else {
+    //         res.send(planetData);
+    //     }
+    // })
+    res.send("I am happy");
 })
 
 app.get('/',   async (req, res) => {

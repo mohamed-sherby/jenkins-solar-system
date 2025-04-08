@@ -61,6 +61,13 @@ pipeline {
                 }
             }
         }
+        stage("Unit Tests") {
+            steps {
+                catchError(buildResult: 'SUCCESS', message: 'Oops! it will be fixed in future releases', stageResult: 'UNSTABLE') {
+                    sh 'npm test'
+                }
+            }
+        }
         stage('Code Coverage') {
             steps {
                 catchError(buildResult: 'SUCCESS', message: 'Oops! it will be fixed in future releases', stageResult: 'UNSTABLE') {
