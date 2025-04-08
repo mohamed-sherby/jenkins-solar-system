@@ -47,11 +47,13 @@ pipeline {
                                 --prettyPrint''', 
                                 odcInstallation: 'owasp'
 
+
+
+                        }
+
                             dependencyCheckPublisher failedTotalCritical: 1, pattern: 'dependency-check-report.xml', stopBuild: false
 
                             publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, icon: '', keepAll: false, reportDir: './', reportFiles: 'dependency-check-report.html', reportName: 'Dependancy Check Report', reportTitles: '', useWrapperFileDirectly: true])
-
-                        }
 
 
 
@@ -66,7 +68,7 @@ pipeline {
                     ${SONAR_SCANNER_CMD} \
                     -Dsonar.projectKey=supercluster \
                     -Dsonar.sources=app.js \
-                    -Dsonar.host.url=http://sonarqube:9000 \
+                    -Dsonar.host.url=http://:9000 \
                     -Dsonar.login=$SONAR_TOKEN
                 '''
             }
