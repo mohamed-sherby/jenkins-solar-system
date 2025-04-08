@@ -37,18 +37,24 @@ pipeline {
 
                 stage('OWASP Dependency Check') {
                     steps {
-                        dependencyCheck additionalArguments: '''
-                            --scan \'./\' 
-                            --out \'./\'  
-                            --format \'ALL\' 
-                            --disableYarnAudit \
-                            --prettyPrint''', 
-                            odcInstallation: 'owasp',
-                            nvdCredentialsId: 'nvd-api-key'
 
-                        dependencyCheckPublisher failedTotalCritical: 1, pattern: 'dependency-check-report.xml', stopBuild: false
+                        catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
+                            dependencyCheck additionalArguments: '''
+                                --scan \'./\' 
+                                --out \'./\'  
+                                --format \'ALL\' 
+                                --disableYarnAudit \
+                                --prettyPrint''', 
+                                odcInstallation: 'owasp'
 
-                        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, icon: '', keepAll: false, reportDir: './', reportFiles: 'dependency-check-report.html', reportName: 'Dependancy Check Report', reportTitles: '', useWrapperFileDirectly: true])
+                            dependencyCheckPublisher failedTotalCritical: 1, pattern: 'dependency-check-report.xml', stopBuild: false
+
+                            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, icon: '', keepAll: false, reportDir: './', reportFiles: 'dependency-check-report.html', reportName: 'Dependancy Check Report', reportTitles: '', useWrapperFileDirectly: true])
+
+                        }
+
+
+
                     }
                 }
             }
