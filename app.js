@@ -56,6 +56,7 @@ app.post('/planet',   function(req, res) {
 
 app.get('/',   async (req, res) => {
     res.sendFile(path.join(__dirname, '/', 'index.html'));
+    console.log("Just a test");
 });
 
 app.get('/api-docs', (req, res) => {
